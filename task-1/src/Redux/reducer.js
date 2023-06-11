@@ -2,6 +2,9 @@ import {
   ADD_DETAILS_FAILURE,
   ADD_DETAILS_REQUEST,
   ADD_DETAILS_SUCCESS,
+  DELETE_DETAILS_FAILURE,
+  DELETE_DETAILS_REQUEST,
+  DELETE_DETAILS_SUCCESS,
   GET_NAME_FAILURE,
   GET_NAME_REQUEST,
   GET_NAME_SUCCESS,
@@ -37,6 +40,23 @@ export const reducer = (state = initialState, action) => {
       };
     case ADD_DETAILS_FAILURE:
       return { ...state, isLoading: false, isError: true };
+
+    case DELETE_DETAILS_REQUEST:
+      return { ...state, isLoading: true, isError: false };
+    case DELETE_DETAILS_SUCCESS:
+      const filteredData = state.data.filter((el) => el.id !== payload);
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: filteredData,
+      };
+    case DELETE_DETAILS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
     default:
       return state;
   }

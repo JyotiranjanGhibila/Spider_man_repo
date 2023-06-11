@@ -17,21 +17,24 @@ const B = () => {
       })
      
     );
+    setName("")
+    setAvatar("")
   };
-  console.log("text-", name);
+  // console.log("text-", name);
   return (
     <div className={style.form__container}>
       <form onSubmit={handleSubmit}>
-        <span>child component B</span>
+        <span>child component: B</span>
         <input
           type="text"
-          placeholder="enter hero names"
+          placeholder="Add hero names"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required="required"
         />
         <input
           type="text"
-          placeholder="hero avatar link"
+          placeholder="Add hero avatar link"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
         />
